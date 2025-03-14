@@ -5,3 +5,7 @@ gcc -shared -fPIC -o libmldsa.so mldsa_44.c -I/usr/lib/jvm/jdk-21.0.6-oracle-x64
 besu --data-path=data --genesis-file=../genesis.json --rpc-http-enabled --rpc-http-api=ETH,NET,QBFT --host-allowlist="*" --rpc-http-cors-origins="all" --profile=ENTERPRISE
 
 Need to change the path of system.load() in MLDSAPrecompiledContract.java
+
+
+#Solc 0.8.2 known 0x5f opcode => downgrade to 0.8.1
+https://github.com/crytic/solc-select
