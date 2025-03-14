@@ -1,0 +1,7 @@
+# build JNI ($JAVA_HOME)
+gcc -shared -fPIC -o libmldsa.so mldsa_44.c -I/usr/lib/jvm/jdk-21.0.6-oracle-x64/include/linux -I/usr/lib/jvm/jdk-21.0.6-oracle-x64/include -I/home/d1l1th1um/Desktop/liboqs/build/include -L/home/d1l1th1um/Desktop/liboqs/build/lib -loqs -lssl -lcrypto
+
+# run boot-node
+besu --data-path=data --genesis-file=../genesis.json --rpc-http-enabled --rpc-http-api=ETH,NET,QBFT --host-allowlist="*" --rpc-http-cors-origins="all" --profile=ENTERPRISE
+
+Need to change the path of system.load() in MLDSAPrecompiledContract.java
