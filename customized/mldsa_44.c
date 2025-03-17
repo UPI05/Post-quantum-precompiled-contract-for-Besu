@@ -155,6 +155,13 @@ JNIEXPORT jbyteArray JNICALL Java_org_hyperledger_besu_evm_precompile_MLDSAPreco
   jsize length = (*env)->GetArrayLength(env, input);
   jbyte *inputBytes = (*env)->GetByteArrayElements(env, input, NULL);
 
+  // Visualize the input
+  printf("Input: ");
+  for (jsize i = 0; i < length; i++) {
+    printf(" %d", inputBytes[i]);
+  }
+  printf("\n");
+
   // Compute objective function hash
   uint8_t genKeyFnHash[EVP_MAX_MD_SIZE], signFnHash[EVP_MAX_MD_SIZE], verifyFnHash[EVP_MAX_MD_SIZE];
   sha256("genKey(bytes)", genKeyFnHash);

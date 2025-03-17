@@ -53,7 +53,7 @@ public class MLDSAPrecompiledContract extends AbstractPrecompiledContract {
 
   @Override
   public long gasRequirement(final Bytes input) {
-    return 5000;
+    return 1;
   }
 
   @Nonnull
