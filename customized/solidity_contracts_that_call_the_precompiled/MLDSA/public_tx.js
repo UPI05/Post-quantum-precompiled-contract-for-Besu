@@ -32,7 +32,7 @@ async function main() {
         value: "0x00",
         data: "0x" + contractBin + contractConstructorInit, // contract binary appended with initialization value
         gasPrice: "0x0", //ETH per unit of gas
-        gasLimit: "0xFF4A22", //max number of gas units the tx is allowed to use
+        gasLimit: "0x444444", //max number of gas units the tx is allowed to use
     };
     console.log("Creating transaction and sign...");
     const signedTx = await web3.eth.accounts.signTransaction(txn, account.privateKey);
