@@ -44,7 +44,9 @@ public interface MainnetPrecompiledContracts {
     registry.put(Address.SHA256, new SHA256PrecompiledContract(gasCalculator));
     registry.put(Address.RIPEMD160, new RIPEMD160PrecompiledContract(gasCalculator));
     registry.put(Address.ID, new IDPrecompiledContract(gasCalculator));
-    registry.put(Address.ML_DSA, new MLDSAPrecompiledContract(gasCalculator));
+    registry.put(Address.ML_DSA44, new MLDSA44PrecompiledContract(gasCalculator));
+    registry.put(Address.ML_DSA65, new MLDSA65PrecompiledContract(gasCalculator));
+    registry.put(Address.ML_DSA87, new MLDSA87PrecompiledContract(gasCalculator));
   }
 
   /**

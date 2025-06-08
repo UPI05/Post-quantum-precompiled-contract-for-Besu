@@ -22,12 +22,12 @@ import javax.annotation.Nonnull;
 import org.apache.tuweni.bytes.Bytes;
 
 /** The x precompiled contract. */
-public class MLDSAPrecompiledContract extends AbstractPrecompiledContract {
+public class MLDSA65PrecompiledContract extends AbstractPrecompiledContract {
   // Load native library
   static {
     try {
       System.load(
-          "/home/d1l1th1um/Desktop/Post-quantum-precompiled-contract-for-Besu/customized/libmldsa.so");
+          "/home/d1l1th1um/Desktop/Post-quantum-precompiled-contract-for-Besu/customized/libmldsa65.so");
     } catch (UnsatisfiedLinkError e) {
       System.err.println("Native code library failed to load.\n" + e);
       System.exit(1);
@@ -47,8 +47,8 @@ public class MLDSAPrecompiledContract extends AbstractPrecompiledContract {
    *
    * @param gasCalculator the gas calculator
    */
-  public MLDSAPrecompiledContract(final GasCalculator gasCalculator) {
-    super("MLDSA", gasCalculator);
+  public MLDSA65PrecompiledContract(final GasCalculator gasCalculator) {
+    super("MLDSA65", gasCalculator);
   }
 
   @Override

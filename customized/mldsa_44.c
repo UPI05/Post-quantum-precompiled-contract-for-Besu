@@ -142,7 +142,7 @@ jbyteArray verify(JNIEnv *env, jbyte *input) {
   return jResult;
 }
 
-JNIEXPORT jbyteArray JNICALL Java_org_hyperledger_besu_evm_precompile_MLDSAPrecompiledContract_processWithNative
+JNIEXPORT jbyteArray JNICALL Java_org_hyperledger_besu_evm_precompile_MLDSA44PrecompiledContract_processWithNative
   (JNIEnv *env, jobject obj, jbyteArray input) {
 
   /*

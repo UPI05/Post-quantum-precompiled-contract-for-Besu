@@ -91,7 +91,9 @@ public class Address extends DelegatingBytes {
   public static final Address BLS12_MAP_FP2_TO_G2 = Address.precompiled(0x11);
 
   /** The constant ML_DSA. */
-  public static final Address ML_DSA = Address.precompiled(0x12);
+  public static final Address ML_DSA44 = Address.precompiled(0x12);
+  public static final Address ML_DSA65 = Address.precompiled(0x13);
+  public static final Address ML_DSA87 = Address.precompiled(0x14);
 
   /** The constant ZERO. */
   public static final Address ZERO = Address.fromHexString("0x0");
