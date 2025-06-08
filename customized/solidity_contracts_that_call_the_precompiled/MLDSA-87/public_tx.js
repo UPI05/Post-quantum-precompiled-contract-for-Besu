@@ -9,7 +9,7 @@ async function main() {
     const privateKey =
     "0xac1fe584b1f9ded111c40f5b8f5330df008b40eef8e59f6ab568414de1e5b956";
     const account = web3.eth.accounts.privateKeyToAccount(privateKey);
-    const name = "mldsa";
+    const name = "MLDSA87";
 
     // read in the contracts
     const contractJsonPath = path.resolve(__dirname, name + ".json");
