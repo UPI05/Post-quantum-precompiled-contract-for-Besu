@@ -56,7 +56,7 @@ async function call(
 
 function main() {
   //const abi = JSON.parse(fs.readFileSync('mldsa.abi', 'utf8'));
-  const contractJsonPath = path.resolve(__dirname, "mldsa.json");
+  const contractJsonPath = path.resolve(__dirname, "MLDSA65.json");
   const contractJson = JSON.parse(fs.readFileSync(contractJsonPath));
   const abi = contractJson.abi;
 

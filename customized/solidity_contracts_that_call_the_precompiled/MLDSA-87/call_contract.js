@@ -56,12 +56,12 @@ async function call(
 
 function main() {
   //const abi = JSON.parse(fs.readFileSync('mldsa.abi', 'utf8'));
-  const contractJsonPath = path.resolve(__dirname, "mldsa.json");
+  const contractJsonPath = path.resolve(__dirname, "MLDSA87.json");
   const contractJson = JSON.parse(fs.readFileSync(contractJsonPath));
   const abi = contractJson.abi;
 
   rl.question("Type '1' for generating keypairs, '2' for signing a message an '3' for verifying: ", (opt) => {
-    call(opt, "http://127.0.0.1:8545", abi, "0xe6cb3d3d2335a2ad971b81541ae4ef5f4ddc1d31");
+    call(opt, "http://127.0.0.1:8545", abi, "0x64487299223f4cc6393f2dd12e59e57190f0c2e1");
   });
 }
 
