@@ -14,7 +14,7 @@
  */
 pragma solidity 0.8.0;
 
-contract mldsa {
+contract MLDSA44 {
     address private CONTRACT_ADDR = 0x0000000000000000000000000000000000000012;
     uint32 private PKEY_LENGTH = 1312;
     uint32 private SKEY_LENGTH = 2560;

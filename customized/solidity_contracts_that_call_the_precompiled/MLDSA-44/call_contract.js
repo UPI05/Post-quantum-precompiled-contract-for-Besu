@@ -61,7 +61,7 @@ function main() {
   const abi = contractJson.abi;
 
   rl.question("Type '1' for generating keypairs, '2' for signing a message an '3' for verifying: ", (opt) => {
-    call(opt, "http://127.0.0.1:8545", abi, "0x99e0fe804acb6178658eb78d1bff2bd0d12f252a");
+    call(opt, "http://127.0.0.1:8545", abi, "0xe5e0ffb9e6483fdda7e2745f0b530c3262487606");
   });
 }
 

@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 const solc = require("solc");
 
 async function main() {
-  const name = "mldsa"
+  const name = "MLDSA65"
   // Load the contract source code
   const sourceCode = await fs.readFile(name + ".sol", "utf8");
   // Compile the source code and retrieve the ABI and bytecode
