@@ -1,0 +1,59 @@
+const { Web3 } = require('web3');
+const fs = require('fs');
+const path = require('path');
+const readline = require('readline');
+const fas = require('fs').promises;
+
+// Create interface for reading from stdin and writing to stdout
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+async function call(
+    selected_function,
+    host,
+    deployedContractAbi,
+    deployedContractAddress,
+  ) {
+    const web3 = new Web3(host);
+    const contractInstance = new web3.eth.Contract(
+      deployedContractAbi,
+      deployedContractAddress,
+    );
+    
+    if (selected_function == 1) {
+      rl.question("Type cert path: ", async (path) => {
+        const crt = await fas.readFile(path, 'utf8');
+        rl.question("Type CNAME: ", async (cname) => {
+          rl.question("Type IP: ", async (ip) => {
+            await contractInstance.methods.addObject(Buffer.from(crt, 'utf-8'), Buffer.from(cname, 'utf-8'), Buffer.from(ip, 'utf-8')).call();
+          });
+        });
+      });
+
+    } else if (selected_function == 2) {
+      rl.question("Type CNAME: ", async (cname) => {
+        const res = await contractInstance.methods.getObject(Buffer.from(cname, 'utf-8')).call();
+        console.log("Cert: " + res[0] + "\n")
+        console.log("Cname: " + res[1] + "\n")
+        console.log("IP: " + res[2] + "\n")
+      });
+    } else {
+      console.log("Invalid option!");
+    }
+    
+  }
+
+function main() {
+  //const abi = JSON.parse(fs.readFileSync('mldsa.abi', 'utf8'));
+  const contractJsonPath = path.resolve(__dirname, "VerificationContract.json");
+  const contractJson = JSON.parse(fs.readFileSync(contractJsonPath));
+  const abi = contractJson.abi;
+
+  rl.question("Type '1' for adding objects, '2' for getting objects:", (opt) => {
+    call(opt, "http://127.0.0.1:8545", abi, "0x3c9687d86a4a93b9106df5b1abcc3a83c9831ce1");
+  });
+}
+
+main();
