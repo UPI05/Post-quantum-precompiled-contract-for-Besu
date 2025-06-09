@@ -35,7 +35,7 @@ async function call(
             const contract = new web3.eth.Contract(deployedContractAbi, deployedContractAddress);
 
             // Encode lời gọi hàm
-            const data = contract.methods.set(crt, cname, ip).encodeABI();
+            const data = contract.methods.addObject(crt, cname, ip).encodeABI();
 
             // Lấy nonce
             const nonce = await web3.eth.getTransactionCount(account.address, "pending");
@@ -65,7 +65,7 @@ async function call(
 
     } else if (selected_function == 2) {
       rl.question("Type CNAME: ", async (cname) => {
-        const res = await contractInstance.methods.getObject(Buffer.from(cname, 'utf-8')).call();
+        const res = await contractInstance.methods.getObject(cname).call();
         console.log("Cert: " + res[0] + "\n")
         console.log("Cname: " + res[1] + "\n")
         console.log("IP: " + res[2] + "\n")
