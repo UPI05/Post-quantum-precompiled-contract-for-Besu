@@ -16,15 +16,18 @@ pragma solidity 0.8.0;
 
 contract VerificationContract {
     struct VerificationObject {
-        string x509Certificate;
-        string commonName;
+        string mlKemEncapKey;
+        string id;
+        uint256 creationTime;
+        uint256 expirationTime;
         string ipAddress;
     }
 
-    // Mapping from commonName to VerificationObject
+    // Mapping from id to VerificationObject
     mapping(string => VerificationObject) private objects;
 
-    mapping(string => bool) private commonNameExists;
+    // Mapping to check if ID exists
+    mapping(string => bool) private idExists;
 
     address private owner;
 
@@ -38,33 +41,45 @@ contract VerificationContract {
     }
 
     function addObject(
-        string memory _x509Certificate,
-        string memory _commonName,
+        string memory _mlKemEncapKey,
+        string memory _id,
+        uint256 _creationTime,
+        uint256 _expirationTime,
         string memory _ipAddress
     ) public onlyOwner {
-        require(!commonNameExists[_commonName], "Common Name already exists");
+        require(!idExists[_id], "ID already exists");
+        require(_creationTime < _expirationTime, "Expiration time must be after creation time");
 
-        objects[_commonName] = VerificationObject({
-            x509Certificate: _x509Certificate,
-            commonName: _commonName,
+        objects[_id] = VerificationObject({
+            mlKemEncapKey: _mlKemEncapKey,
+            id: _id,
+            creationTime: _creationTime,
+            expirationTime: _expirationTime,
             ipAddress: _ipAddress
         });
 
-        commonNameExists[_commonName] = true;
+        idExists[_id] = true;
     }
 
-    function getObject(string memory _commonName)
+    function getObject(string memory _id)
         public
         view
         returns (
-            string memory x509Certificate,
-            string memory commonName,
+            string memory mlKemEncapKey,
+            string memory id,
+            uint256 creationTime,
+            uint256 expirationTime,
             string memory ipAddress
         )
     {
-        require(commonNameExists[_commonName], "Common Name does not exist");
+        require(idExists[_id], "ID does not exist");
 
-        VerificationObject memory obj = objects[_commonName];
-        return (obj.x509Certificate, obj.commonName, obj.ipAddress);
+        VerificationObject memory obj = objects[_id];
+        return (
+            obj.mlKemEncapKey,
+            obj.creationTime,
+            obj.expirationTime,
+            obj.ipAddress
+        );
     }
 }
