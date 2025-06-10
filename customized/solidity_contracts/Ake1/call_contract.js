@@ -45,7 +45,7 @@ async function call(
               nonce: web3.utils.toHex(nonce),
               to: deployedContractAddress,
               data: data,
-              gas: "0x24A22", // hoặc tùy chỉnh
+              gas: "0x444444", // hoặc tùy chỉnh
               gasPrice: "0xFF", // Besu không cần cao
               value: "0x0",
             };
@@ -81,10 +81,10 @@ function main() {
   const contractJsonPath = path.resolve(__dirname, "VerificationContract.json");
   const contractJson = JSON.parse(fs.readFileSync(contractJsonPath));
   const abi = contractJson.abi;
-  const pkey = "";
+  const pkey = "0xae6ae8e5ccbfb04590405997ee2d52d2b330726137b875053c36d94e974d162f";
 
   rl.question("Type '1' for adding objects, '2' for getting objects:", (opt) => {
-    call(opt, "http://127.0.0.1:8545", pkey, abi, "0x3c9687d86a4a93b9106df5b1abcc3a83c9831ce1");
+    call(opt, "http://127.0.0.1:8545", pkey, abi, "0xb9a219631aed55ebc3d998f17c3840b7ec39c0cc");
   });
 }
 

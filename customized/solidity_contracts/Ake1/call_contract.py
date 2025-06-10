@@ -29,7 +29,7 @@ def get_object(host, contract_address, abi_path):
 
 if __name__ == "__main__":
     HOST = "http://127.0.0.1:8545"
-    CONTRACT_ADDRESS = "0x3c9687d86a4a93b9106df5b1abcc3a83c9831ce1"
+    CONTRACT_ADDRESS = Web3.to_checksum_address("0xb9a219631aed55ebc3d998f17c3840b7ec39c0cc")
     ABI_PATH = os.path.join(os.path.dirname(__file__), "VerificationContract.json")
 
     get_object(HOST, CONTRACT_ADDRESS, ABI_PATH)
