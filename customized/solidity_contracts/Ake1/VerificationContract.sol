@@ -66,7 +66,6 @@ contract VerificationContract {
         view
         returns (
             string memory mlKemEncapKey,
-            string memory id,
             uint256 creationTime,
             uint256 expirationTime,
             string memory ipAddress
